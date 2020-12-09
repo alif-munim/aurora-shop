@@ -15,7 +15,7 @@ const ShippingScreen = ({ history }) => {
     const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
     const [country, setCountry] = useState(shippingAddress.country);
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const submitHandler = (e) => {
         e.preventDefault();
