@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Row, Col, ListGroup, Image, Card, Container } from "react-bootstrap";
+import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Message from "../components/Message"
 import CheckoutSteps from "../components/CheckoutSteps"
-import FormContainer from "../components/FormContainer";
 import { createOrder } from "../actions/orderActions"
 
 const PlaceOrderScreen = ({ history }) => {
@@ -32,7 +31,7 @@ const PlaceOrderScreen = ({ history }) => {
         if (success) {
             history.push(`/orders/${order._id}`);
         }
-    }, [history, success]);
+    }, [history, success, order._id]);
 
     const addDecimals = (num) => {
         return (Math.round(num * 100) / 100).toFixed(2);
