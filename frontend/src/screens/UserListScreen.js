@@ -7,7 +7,7 @@ import { register } from "../actions/userActions";
 import FormContainer from "../components/FormContainer"
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { listUsers } from "../actions/userActions";
+import { listUsers, deleteUser } from "../actions/userActions";
 
 const UserListScreen = ({ history }) => {
 
@@ -19,16 +19,21 @@ const UserListScreen = ({ history }) => {
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
 
+    const userDelete = useSelector(state => state.userDelete);
+    const { success: successDelete } = userDelete;
+
     useEffect(() => {
         if (userInfo && userInfo.isAdmin) {
             dispatch(listUsers());
         } else {
             history.push("/login");
         }
-    }, [dispatch, history]);
+    }, [dispatch, history, successDelete]);
 
-    const deleteHandler = () => {
-        // delete user
+    const deleteHandler = (id) => {
+        if (window.confirm("Are you sure?")) {
+            dispatch(deleteUser(id));
+        }
     }
 
     return (
