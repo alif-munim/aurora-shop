@@ -31,7 +31,7 @@ const PlaceOrderScreen = ({ history }) => {
         if (success) {
             history.push(`/orders/${order._id}`);
         }
-    }, [history, success, order._id]);
+    }, [history, success, order]);
 
     const addDecimals = (num) => {
         return (Math.round(num * 100) / 100).toFixed(2);
