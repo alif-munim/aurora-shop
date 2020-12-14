@@ -8,7 +8,9 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 
 
-const HomeScreen = () => {
+const HomeScreen = ({ match }) => {
+
+	const keyword = match.params.keyword;
 
 	const dispatch = useDispatch();
 
@@ -16,8 +18,8 @@ const HomeScreen = () => {
 	const { loading, error, products } = productList
 
 	useEffect(() => {
-		dispatch(listProducts());
-	}, [dispatch]);
+		dispatch(listProducts(keyword));
+	}, [dispatch, keyword]);
 
 	return (
 		<>
